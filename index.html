@@ -284,16 +284,19 @@ li a:hover:not(.active) {
         </main>
         <footer>
 	    
-	<span id="copyright symbol">&copy copyright 2008  //insertion du symbole et de la mention copyright
-<?php bloginfo('name'); ?> //insertion du nom du blog
-Tous droits r&eacute;serv&eacute;s.</span> //insertion de la mention française
-		
-		 <hr>
-			 
-		<span class="meta-sep">|</span> //ajout d'une barre de séparation
-<span id="copyright symbol"><a href="https://lien.fr" title="Copyright">&copy Texte</a></span>
-
-    <DIV align="center"><I>Made 21 April 2020 by Fran&ccedil;ois Papin.</I></DIV>
+	<DIV align="center">
+		<div id="footer">
+		<jdoc:include type="modules" name="footer" style="raw" />
+ 		<div id="copyright">Copyright &copy; 2020 - <?php echo date('Y');?>
+		 Fran&ccedil;ois Papin
+		</div>
+		</div>
+	</DIV>
+	
+	<DIV align="center">Site : NPEilab</DIV>
+	<DIV align="center">Adress : <A HREF="francoispapin.github.io/NPEilab" target="_blank">francoispapin.github.io/NPEilab</A></DIV>
+	<DIV align="center">Author : Fran&ccedil;ois Papin</DIV>
+	<DIV align="center">License : <A HREF="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</A></DIV>
 		
         </footer>
     </body>
