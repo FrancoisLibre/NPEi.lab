@@ -270,12 +270,3 @@ margin-left:50px;
   background: #ff6600;
   color: white;
 }
-
-/* custom css theme panel */ 
-
-.fa {padding: 20px; 
-font-size: 30px;
-width: 70px;
-text-align: center;
-text-decoration: none;
-border-radius: 50%; }
