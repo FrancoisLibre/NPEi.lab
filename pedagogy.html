@@ -1321,7 +1321,7 @@ CM2
 
 
 <BR>
-
+	
 <DIV>
 
 <script language="JavaScript">
@@ -1336,21 +1336,43 @@ CM2
 	if (daym<10)
 	daym="0"+daym
 	var dayarray=new Array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi")
-	var montharray=new Array(" janvier "," fevrier "," mars ","avril ","mai ","juin","juillet ","aout ","septembre "," octobre "," novembre "," décembre ")
-	document.write("   "+dayarray[day]+", "+daym+" "+montharray[month]+year+" ")
+	var montharray=new Array(" Janvier "," Février "," Mars ","Avril ","Mai ","Juin","Juillet ","Août ","Septembre "," Octobre "," Novembre "," Décembre ")
+	document.write("   "+dayarray[day]+" "+daym+" "+montharray[month]+year+" ")
 	document.write("</b></i></font>")
 	</script>
 	
 </DIV>
 		
 <BR>
+	
+<DIV>
 
-
+<script language="JavaScript">
+ 	document.write("<font color='#000000' size='4' face='arial'>")
+	var mydate=new Date()
+	var year=mydate.getYear()
+	if (year<2000)
+	year += (year < 1900) ? 1900 : 0
+	var day=mydate.getDay()
+	var month=mydate.getMonth()
+	var daym=mydate.getDate()
+	if (daym<10)
+	daym="0"+daym
+	var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+	var montharray=new Array(" January "," February "," March ","April ","May ","June","July ","August ","September "," October "," November "," December ")
+	document.write("   "+dayarray[day]+" "+daym+" "+montharray[month]+year+" ")
+	document.write("</b></i></font>")
+	</script>
+	
+</DIV>
+		
+<BR>
+	
 <DIV>
 
 
 
-<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/fr/city/2988507"><span style="color:gray;">Heure actuelle</span><br />Paris, France</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=medium&timezone=Europe%2FParis" width="100%" height="115" frameborder="0" seamless></iframe> </div>
+<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;"><span style="color:gray;">Heure actuelle</span><br />Paris, France</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=medium&timezone=Europe%2FParis" width="100%" height="115" frameborder="0" seamless></iframe> </div>
 
 	
 </DIV>
