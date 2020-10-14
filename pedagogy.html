@@ -50,7 +50,28 @@ li a:hover:not(.active) {
 }
 </style>
 
-
+<script LANGUAGE="JavaScript">
+<!--
+function getTime() {
+now = new Date();
+y2k = new Date("Mar 31 2009 15:00:00"); //ICI LA DATE CIBLE
+days = (y2k - now) / 1000 / 60 / 60 / 24;
+daysRound = Math.floor(days);
+hours = (y2k - now) / 1000 / 60 / 60 - (24 * daysRound);
+hoursRound = Math.floor(hours);
+minutes = (y2k - now) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound);
+minutesRound = Math.floor(minutes);
+seconds = (y2k - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound);
+secondsRound = Math.round(seconds);
+sec = (secondsRound == 1) ? " seconde" : " secondes";
+min = (minutesRound == 1) ? " minute" : " minutes, ";
+hr = (hoursRound == 1) ? " heure" : " heures, ";
+dy = (daysRound == 1)  ? " jour" : " jours, "
+document.timeForm.input1.value = "Encore " + daysRound  + dy + hoursRound + hr + minutesRound + min + secondsRound + sec + " avant le 31 Mars 2009 15 H 00 !";
+newtime = window.setTimeout("getTime();", 1000);
+}
+// -->
+</script>
 
 </head>
 
@@ -1419,6 +1440,18 @@ CM2
 <BR>
 <BR>
 <BR>
+	
+	<form name=timeForm>
+      <input type="texte" name=input1 size=110 border-style="none" style="border-bottom: 0px solid; border-left: 0px solid;border-right: 0px solid;border-top: 0px solid;font:12px arial, helvetica,sans-serif">
+    </form>
+	
+	
+<BR>
+<BR>
+<BR>
+<BR>
+	
+	
 	<h2><a name="PhraseDuJour">Phrase du jour</h2>
 
 
