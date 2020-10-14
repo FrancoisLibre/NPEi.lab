@@ -50,47 +50,6 @@ ul.navbar a {
 	
 
 
-HEURE
-HEURE
-HEURE
-HEURE
-HEURE
-
-<style>
-		#my-hour{
-			font-size: 20px;
-			border-radius: 5px;
-			border: solid 1px grey;
-			display: inline;
-			padding: 2px;
-		}
-</style>
-
-
-<h2 id="my-hour"></h2>
-	<script>
-		function getTime () { 
-			var date = new Date(); 
-			var hours = date.getHours(); 
-			var minutes = date.getMinutes(); 
-			var seconds = date.getSeconds(); 
-			hours = ((hours < 10) ? " 0" : " ") + hours;
-			minutes = ((minutes < 10) ? ":0" : ":") + minutes; 
-			seconds = ((seconds < 10) ? ":0" : ":") + seconds; 
-			var myHour = document.getElementById("my-hour");
-			myHour.textContent = hours + minutes + seconds;
-			setTimeout("getTime()",1000); 
-			
-		}
-		getTime();
-	</script>
-
-HEURE
-HEURE
-HEURE
-HEURE
-HEURE
-
 
 
 body {
