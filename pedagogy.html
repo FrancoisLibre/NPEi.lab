@@ -1100,6 +1100,61 @@ CM2
 </TR>
 </TABLE>
 
+<BR>
+<BR>
+
+<TABLE border="0">
+<TR>
+	
+	
+	<TD width="5%">
+	<DIV align="center">
+	<figure>
+	<A HREF="pedagogy.html#Date"><IMG SRC="images/symboles/Antu_calendar.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR>Sécurité</figcaption>
+	</figure>
+	</DIV>
+	</TD>
+		
+	<TD width="5%">
+	<DIV align="center">
+	<figure>
+	<A HREF="pedagogy.html#Chrono"><IMG SRC="images/symboles/chrono.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR>Chronomètre</figcaption>
+	</figure>
+	</DIV>
+	</TD>
+
+	<TD width="5%">
+	<DIV align="center">
+	<figure>
+	<A HREF="pedagogy.html#Comptearebours"><IMG SRC="images/symboles/comptearebours.jpg" border="0" align="center" HEIGHT=70 WIDTH=80></A>
+	<figcaption><BR>Compte à rebours</figcaption>
+	</figure>
+	</DIV>
+	</TD>
+
+	<TD width="5%">
+	<DIV align="center">
+	<figure>
+	<A HREF="pedagogy.html#Développementdurable"><IMG SRC="images/symboles/développement1.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR>...</figcaption>
+	</figure>
+	</DIV>
+	</TD>
+
+	<TD width="5%">
+	<DIV align="center">
+	<figure>
+	<A HREF="pedagogy.html#EMI"><IMG SRC="images/symboles/EMI.jpg" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR>...</figcaption>
+	</figure>
+	</DIV>
+	</TD>
+
+
+</TR>
+</TABLE>
 
 <BR>
 <BR>
@@ -1419,32 +1474,45 @@ CM2
 <BR>
 <BR>
 <BR>
-Décompte
+
+	<h2><a name="Chronomètre">Date</h2>
+
+
+
+<TABLE border="0">
+<TR>
+
+	<TD width="45%">
+	<DIV align="left">
+	<figure>
+	</figure>
+	</DIV>
+	</TD>
+
+
+	<TD width="10%">
+	<DIV align="center">
+	<figure>
+	<A HREF="pedagogy.html#Chrono"><IMG SRC="images/symboles/chrono.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR>Chronomètre</figcaption>
+	</figure>
+	</DIV>
+	</TD>
+
+	<TD width="45%">
+	<DIV align="left">
+	<figure>
+	</figure>
+	</DIV>
+	</TD>
+	
+	
+
+</TR>
+</TABLE>
+
+
 <BR>
-	
-	<script type="text/javascript">
- window.onload = function() {
-  NewDecompte("dec",20);
- }
- function NewDecompte (id,seconde)  {
-  if (seconde>0) {
-   dateFin=new Date();
-   dateFin.setTime((dateFin.getTime()+(seconde*1000)));
-   DecompteRefresh(id,dateFin.getTime());
-  }
- }
- function DecompteRefresh(id,dateFin) {
-  dateNow=new Date();
-  if (dateFin>=dateNow.getTime()) {
-   temps=parseInt((dateFin-dateNow.getTime())/1000,10);
-   date_texte = ''+temps;
-   document.getElementById(id).innerHTML=date_texte;
-   setTimeout(function() { DecompteRefresh(id,dateFin); },500);
-  }
- }
-</script>
-<div id="dec"></div>
-	
 <BR>
 Chronomètre
 <BR>	
@@ -1471,6 +1539,76 @@ Chronomètre
  }
 </script>
 <div id="chrono1"></div>
+
+	
+<BR>
+<BR>
+
+	<h2><a name="Compte à rebours">Date</h2>
+
+
+
+<TABLE border="0">
+<TR>
+
+	<TD width="45%">
+	<DIV align="left">
+	<figure>
+	</figure>
+	</DIV>
+	</TD>
+
+
+	<TD width="10%">
+	<DIV align="center">
+	<figure>
+	<A HREF="pedagogy.html#Comptearebours"><IMG SRC="images/symboles/comptearebours.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR>Compte à rebours</figcaption>
+	</figure>
+	</DIV>
+	</TD>
+
+	<TD width="45%">
+	<DIV align="left">
+	<figure>
+	</figure>
+	</DIV>
+	</TD>
+	
+	
+
+</TR>
+</TABLE>
+
+
+<BR>
+	<BR>
+Décompte
+<BR>
+	
+	<script type="text/javascript">
+ window.onload = function() {
+  NewDecompte("dec",20);
+ }
+ function NewDecompte (id,seconde)  {
+  if (seconde>0) {
+   dateFin=new Date();
+   dateFin.setTime((dateFin.getTime()+(seconde*1000)));
+   DecompteRefresh(id,dateFin.getTime());
+  }
+ }
+ function DecompteRefresh(id,dateFin) {
+  dateNow=new Date();
+  if (dateFin>=dateNow.getTime()) {
+   temps=parseInt((dateFin-dateNow.getTime())/1000,10);
+   date_texte = ''+temps;
+   document.getElementById(id).innerHTML=date_texte;
+   setTimeout(function() { DecompteRefresh(id,dateFin); },500);
+  }
+ }
+</script>
+<div id="dec"></div>
+	
 
 
 <BR>
