@@ -62,7 +62,7 @@ ul.navbar a {
 </style>
 
 
-<h1 id="my-hour"></h1>
+<h2 id="my-hour"></h2>
 	<script>
 		function getTime () { 
 			var date = new Date(); 
