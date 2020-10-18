@@ -1527,36 +1527,14 @@ CM2
 <DIV align="center">
 Chronomètre
 <BR>	
-	<script type="text/javascript">
- window.onload = function() {
-  NewChrono("chrono1");
- }
- function NewChrono(id) {
-  var dateRef=new Date();
-  ChronoRefresh(id,dateRef.getTime());
- }
- function ChronoRefresh(id,dateRef) {
-  var dateNow=new Date();
-  var temps=parseInt((dateNow.getTime()-dateRef)/1000,10);
-  var minute=0;
-  while (temps>=60) {
-   temps-=60;
-   minute++;
-  }
-  var seconde=temps;
-  var date_texte=minute+'m '+(seconde<=9?'0':'')+seconde+'s';
-  document.getElementById(id).innerHTML=date_texte;
-  setTimeout(function() { ChronoRefresh(id,dateRef); },500);
- }
-</script>
-<div id="chrono1"></div>
-
+...
 </DIV>
 	
 <BR>
 <BR>
 
-	<h2><a name="Comptearebours1">Compte à rebours 1</h2>
+	
+	<h2><a name="Comptearebours">Compte à rebours</h2>
 
 
 
@@ -1576,83 +1554,6 @@ Chronomètre
 	<figure>
 	<A HREF="pedagogy.html#Comptearebours"><IMG SRC="images/symboles/comptearebours.png" border="0" align="center" HEIGHT=70 WIDTH=60></A>
 	<figcaption><BR>Compte à rebours</figcaption>
-	</figure>
-	</DIV>
-	</TD>
-
-	<TD width="45%">
-	<DIV align="left">
-	<figure>
-	</figure>
-	</DIV>
-	</TD>
-	
-	
-
-</TR>
-</TABLE>
-
-
-<BR>
-<BR>
-<DIV align="center">
-Décompte à 1 minutes (60 secondes)
-<BR>
-	
-	<script type="text/javascript">
- window.onload = function() {
-  NewDecompte("dec",60);
- }
- function NewDecompte (id,seconde)  {
-  if (seconde>0) {
-   dateFin=new Date();
-   dateFin.setTime((dateFin.getTime()+(seconde*1000)));
-   DecompteRefresh(id,dateFin.getTime());
-  }
- }
- function DecompteRefresh(id,dateFin) {
-  dateNow=new Date();
-  if (dateFin>=dateNow.getTime()) {
-   temps=parseInt((dateFin-dateNow.getTime())/1000,10);
-   date_texte = ''+temps;
-   document.getElementById(id).innerHTML=date_texte;
-   setTimeout(function() { DecompteRefresh(id,dateFin); },500);
-  }
- }
-</script>
-<div id="dec"></div>
-	
-</DIV>
-	
-
-
-<BR>
-<BR>
-
-	
-
-
-
-	<h2><a name="Comptearebours4">Compte à rebours4</h2>
-
-
-
-<TABLE border="0">
-<TR>
-
-	<TD width="45%">
-	<DIV align="left">
-	<figure>
-	</figure>
-	</DIV>
-	</TD>
-
-
-	<TD width="10%">
-	<DIV align="center">
-	<figure>
-	<A HREF="pedagogy.html#Comptearebours4"><IMG SRC="images/symboles/comptearebours.png" border="0" align="center" HEIGHT=70 WIDTH=60></A>
-	<figcaption><BR>Compte à rebours 4</figcaption>
 	</figure>
 	</DIV>
 	</TD>
