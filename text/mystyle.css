@@ -16,15 +16,15 @@ position: absolute;
     right: 1em;
     width: 9em }
 
-h1 { color: green ; text-align: left ; font-family: "Times New Roman",
+h1 { color: black ; text-align: left ; font-family: "Times New Roman",
           Times, serif, sans-serif }
 h2 { color: black ; text-align: left ; font-family: "Times New Roman",
           Times, serif, sans-serif }
-h3 { color: black ; text-align: left ; font-family: "Helvetica",
+h3 { color: black ; text-align: left ; font-family: "Times New Roman",
           Times, serif, sans-serif }
-h4 { color: black ; text-align: left ; font-family: "Helvetica",
+h4 { color: black ; text-align: left ; font-family: "Times New Roman",
           Times, serif, sans-serif }
-h5 { color: black ; text-align: left ; font-family: "Helvetica",
+h5 { color: black ; text-align: left ; font-family: "Times New Roman",
           Times, serif, sans-serif }
 
 
