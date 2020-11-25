@@ -9871,13 +9871,327 @@ Police d'écriture B
 <BR>
 <BR>
 <DIV align="center">
-Chronomètre
+Chronomètre 1
 <BR>	
 	
-...
+var mychrono3 = true.setChrono();
 	
 </DIV>
+
+<BR>
+<BR>
+<BR>	
 	
+<div id="mydiv01">Chronomètre 2</div>
+
+var mychrono2 = true.setChrono(); //affiche le chrono
+
+mychrono2.cnxDataset.startChrono = new Date(); //force la mise à 0 du chrono
+	
+mychrono2.chronoAffiche(); //affiche le temps passé entre 2 séquences, ici le calcul de la différence entre les 2 Array	
+	
+<script>
+function chargeArray(){ //temps moyen 3,500 secondes 
+        //créer un chronomètre
+        var mydiv = "mydiv01".getElt(); //retourne l'élément HTLM <div> ayant comme id "mydiv"
+        var myconfig = { //variable de configuration
+                ancrage: mydiv, //valeur par défaut false pour insérer à l'emplacement du script
+                append: "appendChild", // valeur par défaut - "insertAfter" - "appendChild" - "insertBefore"
+                fin: ""
+        };
+        var mychrono1 = true.setChrono(myconfig); //myconfig est un paramètre optionnel
+        mychrono1.cnxDataset.startChrono = new Date();
+
+        var arr1 = new Array;
+        //charge un Array
+        for(var x=0; x<=50000000; x++){ //50 millions d'entrée
+                arr1.push(x);
+        };
+
+        mychrono1.chronoAffiche(); //affiche le temps dexécution du programme
+        alert(arr1.length); //taille du tableau, nombre d'éléments
+};
+</script> 	
+	
+<script>
+var mychrono2 = true.setChrono(); //attend l'exécution de votre programme de test
+
+function testDifference(){
+        var set1 = new Set;
+        for(var x=0; x<=500000; x++){ // 500 000 entrée
+                set1.add(x);
+        };
+
+        var set2 = new Set;
+        for(var x=0; x<=499990; x++){
+                set2.add(x);
+        };
+
+        const arr1 = [...set1];
+        const arr2 = Array.from(set2);
+
+        mychrono2.cnxDataset.startChrono = new Date();
+        var difference = new Set([...set1].filter(x => !set2.has(x))); //0,227 secondes
+        //var difference = arr1.filter(x => !arr2.includes(x)); //beaucoup plus long, en fait bloque le script...
+
+        mychrono2.chronoAffiche();
+        alert(difference.size);
+};
+</script>
+	
+	
+	
+
+<BR>
+<BR>
+<BR>
+<BR>
+Chronomètre 3
+<BR>
+<BR>
+
+oolean.prototype.setChrono = function(){ //créer un chronomètre
+                /* -----------------------
+                    //créer un chronomètre
+                    var mydiv = "mydiv".getElt(); //retourne l'élément HTLM <div> ayant comme id "mydiv"
+                    var myconfig = { //variable de configuration
+                        ancrage: mydiv, //valeur par défaut false pour insérer à l'emplacement du script
+                        append: "appendChild", // valeur par défaut - "insertAfter" - "appendChild" - "insertBefore"
+                        fin: ""
+                    };
+                    var appli = true.setChrono(myconfig); //myconfig est un paramètre optionnel
+                    var appli = true.setChrono(); - appli est un Object() HTML, le conteneur de l'application
+                ------------------------- */
+                //var objChrono = this; //objet appelant
+                var conteneurChrono; // c'est le composant HTML du chrono, son conteneur en fait!
+                
+                var configChrono = { //variable de configuration
+                    ancrage: false, //valeur par défaut false pour insérer à l'emplacement du script
+                    append: "insertAfter", // valeur par défaut "insertAfter" - "appendChild" - "insertBefore"
+                    fin: ""
+                };
+                if(arguments.length){ //teste si il existe des paramètres à la fonction
+                    if (arguments[0].ancrage)     configChrono.ancrage = arguments[0].ancrage;
+                    if (arguments[0].append)     configChrono.append = arguments[0].append;
+                };
+                
+                function chronoDraw(){ //dessine notre application
+                    var prefix = cnx().log.getPassword(16); //nombre aléatoire pour identifiant unique du conteneur et autres éléments HTML
+                    if (!configChrono.ancrage) configChrono.ancrage = new Object().activeScript(); //permet d'écrire le setChrono à l'emplacement du code du script
+
+                    var conteneur = document.createElement("div"); //génère le conteneur de l'application
+                    conteneur.id = prefix + "jpCnxChrono"; //racine des id des composants de l'objet
+                    conteneur.style.position = "relative"; //comportement comme du texte
+                    conteneur.style.display = "inline-block"; //comportement comme du texte
+                    conteneur.name = "jpCnxChrono"; //permet de trouver tous les éléments de type Chrono avec getElementByName()
+                    //conteneur.style.zIndex = 10;
+                    //conteneur.style.backgroundColor = "red";
+                    
+                    switch(configChrono.append) { //insère le conteneur dans la page web
+                        case "appendChild":
+                            configChrono.ancrage.appendChild(conteneur); //associe le conteneur au point d'ancrage
+                            break;
+                        case "insertBefore":
+                            //configChrono.ancrage.parentNode.insertBefore(conteneur, configChrono.ancrage); //Dans le parent de ancrage, insérer le nouvel elt conteneur avant ancrage
+                            configChrono.ancrage.doInsertBefore(conteneur); //insère conteneur avant configChrono.ancrage
+                            break;
+                        case "insertAfter":
+                            configChrono.ancrage.doInsertAfter(conteneur); //insère  conteneur après le point d'ancrage
+                            break;
+                        default:
+                            configChrono.ancrage.doInsertAfter(conteneur); //associe le conteneur au point d'ancrage
+                            break;
+                    };
+
+                    var zIndex = 10;
+
+                    var racineChrono = conteneur.id; //renvoie notre conteneur comme elt HTML
+                    /* ------------ en html ----------------
+                    <span id="chronotime">0:00:00:00</span>
+                    <input type="button" name="startstop" value="start!" onClick="chronoStart();" />
+                    <input type="button" name="reset" value="reset!" onClick="chronoReset();" />
+                    */
+                    var spanChrono = document.createElement("span");
+                    spanChrono.id = racineChrono + "chronotime";
+                    spanChrono.innerHTML = "0:00:00:00";
+                    
+                    var buttonStartStop = document.createElement("button");
+                    buttonStartStop.id = racineChrono + "StartStop";
+                    buttonStartStop.innerHTML = "Start";
+                    //buttonStartStop.addEvent("click", function(e){ chronoStart(e, conteneur)} );
+                    buttonStartStop.onclick = chronoStart;
+                    
+                    var buttonReset = document.createElement("button");
+                    buttonReset.id = racineChrono + "Reset";
+                    buttonReset.innerHTML = "Reset";
+                    buttonReset.style.visibility = "hidden";
+                    buttonReset.onclick = chronoReset; //ne pas utiliser de fonction anonyme pour Event si celui ci doit être modifier ou supprimer
+                    // la fonction getConteneurChrono() s'applique à buttonReset
+                    
+                    /* -------------------------
+                        Pour une balise div:
+                        Avec OnFocus et OnBlur nous pouvons faire l'équivallent de OnChange pour une balise div
+                        OnFocus et OnBlur ne sont actif que si contentEditable est déjà déclarée et égal à true dans une balise div!
+                    --------------------------- */
+                    conteneur.appendChild(spanChrono);
+                    conteneur.appendChild(buttonStartStop);
+                    conteneur.appendChild(buttonReset);
+
+                    /* ------------------------------------
+                    Il faut utiliser une balise <table> pour conserver le onMouseOver
+                    La balise Div ou UL perd le onMouseOver lors du survol des label!
+                    ---------------------------------- */
+
+                    return conteneur; //retourne le conteneur de l'application
+                }; //end of draw()
+                
+                conteneurChrono = chronoDraw(); //dessine le control - doit être définit avant les propriétés de l'application - ses fonctions
+                
+                /* -----------------------------
+                object.cnxDataset.variable conserve la compatibilité avec IE8
+                pour les navigateurs plus récents on peut écrire directement object.variable
+                ou objet.dataset.variable (as attribute)
+                --------------------------------- */
+                conteneurChrono.cnxDataset.startChrono = 0;
+                conteneurChrono.cnxDataset.diffChrono = 0;
+                conteneurChrono.cnxDataset.timerID = false; //gère la boucle 
+
+                /* ------------- liste des propriétés et fonctions - accessible en externe ----------------------- */
+                    conteneurChrono.chronoAffiche = function(){
+                        var endChrono;
+                        var racineChrono = conteneurChrono.id;
+                        
+                        endChrono = new Date();
+                        conteneurChrono.cnxDataset.diffChrono = endChrono - conteneurChrono.cnxDataset.startChrono;
+                        conteneurChrono.cnxDataset.diffChrono = new Date(conteneurChrono.cnxDataset.diffChrono);
+                        var msec = conteneurChrono.cnxDataset.diffChrono.getMilliseconds();
+                        var sec = conteneurChrono.cnxDataset.diffChrono.getSeconds();
+                        var min = conteneurChrono.cnxDataset.diffChrono.getMinutes();
+                        var hr = conteneurChrono.cnxDataset.diffChrono.getHours()-1;
+                        if (min < 10){
+                            min = "0" + min;
+                        };
+                        if (sec < 10){
+                            sec = "0" + sec;
+                        };
+                        if(msec < 10){
+                            msec = "00" +msec;
+                        }
+                        else if(msec < 100){
+                            msec = "0" +msec;
+                        };
+                        document.getElementById(racineChrono + "chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec;
+                    };
+                    
+                    conteneurChrono.chronoInitialize = function(){
+                        var racineChrono = conteneurChrono.id;
+                        conteneurChrono.chronoAffiche();
+                        if (conteneurChrono.cnxDataset.timerID == true) { //stop la boucle
+                            setTimeout(function(){ conteneurChrono.chronoInitialize() }, 10); // pas de timerId cela ne fonctionne pas correctement
+                        };
+                    };
+
+                /* ----------------- function associées aux évènements -------------------- */
+                    function chronoStart(e){
+                        var  e = arguments[0] ||  window.event; //pour IE
+                        var cible = cnx().event.getTarget(e) || this; // this pour IE<=8 et custom event - trouve la cible de l'évènement
+                        var conteneur = getConteneurChrono(cible);
+                        chronoStartOther(conteneur);
+                    };
+
+                    function chronoReset(e){ //s'éxécute en cours de comptage
+                        var  e = arguments[0] ||  window.event; //pour IE
+                        var cible = cnx().event.getTarget(e) || this; // this pour IE<=8 et custom event - trouve la cible de l'évènement
+                        var conteneur = getConteneurChrono(cible);
+                        var racineChrono = conteneur.id;
+                        
+                        document.getElementById(racineChrono + "chronotime").innerHTML = "0:00:00:000";
+                        conteneur.cnxDataset.startChrono = new Date();
+                    };
+                
+                    function chronoStop(e){
+                        var  e = arguments[0] ||  window.event; //pour IE
+                        var cible = cnx().event.getTarget(e) || this; // this pour IE<=8 et custom event - trouve la cible de l'évènement
+                        var conteneur = getConteneurChrono(cible);
+                        var racineChrono = conteneur.id;
+                        
+                        var buttonStartStop = document.getElementById(racineChrono + "StartStop");
+                        buttonStartStop.innerHTML = "Continue!";
+                        buttonStartStop.onclick = chronoContinue;
+                        
+                        var buttonReset = document.getElementById(racineChrono + "Reset");
+                        buttonReset.onclick = chronoStopReset;
+
+                        conteneur.cnxDataset.timerID = false;
+                        //cnx().trace.print("chronoStop "+ conteneur.cnxDataset.timerID);
+                    };
+                    
+                    function chronoStopReset(e){ //s'execute si le comptage est arrêté
+                        var  e = arguments[0] ||  window.event; //pour IE
+                        var cible = cnx().event.getTarget(e) || this; // this pour IE<=8 et custom event - trouve la cible de l'évènement
+                        var conteneur = getConteneurChrono(cible); //retourne le conteneur de l'applicatif; donc ici le <div>
+                        var racineChrono = conteneur.id;
+                        
+                        document.getElementById(racineChrono + "chronotime").innerHTML = "0:00:00:000";
+                        
+                        var buttonStartStop = document.getElementById(racineChrono + "StartStop");
+                        buttonStartStop.innerHTML = "Start";
+                        buttonStartStop.onclick = chronoStart;
+                    };
+                    
+                    function chronoContinue(e){
+                        var  e = arguments[0] ||  window.event; //pour IE
+                        var cible = cnx().event.getTarget(e) || this; // this pour IE<=8 et custom event - trouve la cible de l'évènement
+                        var conteneur = getConteneurChrono(cible); //retourne le contenur de l'applicatif, ici la <div>
+                        var racineChrono = conteneur.id;
+                        
+                        var buttonStartStop = document.getElementById(racineChrono + "StartStop");
+                        buttonStartStop.innerHTML = "Stop!";
+                        buttonStartStop.onclick = chronoStop; //pas de fonction anonyme si Event doit être modifié, remplacé
+                        
+                        var buttonReset = document.getElementById(racineChrono + "Reset");
+                        buttonReset.onclick = chronoReset; //pas de fonction anonyme si Event doit être modifié, remplacé
+                        
+                        conteneur.cnxDataset.startChrono = new Date() - conteneur.cnxDataset.diffChrono;
+                        conteneur.cnxDataset.startChrono = new Date(conteneur.cnxDataset.startChrono);
+                        conteneur.cnxDataset.timerID = true;
+                        //cnx().trace.print("chronoContinue "+ conteneur.cnxDataset.timerID);
+                        conteneur.chronoInitialize();
+                    };
+
+                /* ------------ Autres instructions --------------- */                    
+
+                    function getConteneurChrono(elt){ //renvoie le conteneur HTML du cette appli
+                        //pourquoi cette fonction?
+                        //lors de la gestion des event la cible est soit le input text, soit un bouton OK ou ESC
+                        //ce code permet de retrouver facilement le conteneur à partir de ces éléments
+                        var id = (elt.id).leftSubstring("jpCnxChrono") + "jpCnxChrono"; //recherche une racine de la listBox
+                        var objConteneurChrono = id.getElt(); //object listBox
+                        return objConteneurChrono; //en fait son conteneur HTML
+                    };
+                    
+                    function chronoStartOther(conteneur){
+                        
+                        var racineChrono = conteneur.id;
+                        
+                        var buttonStartStop = document.getElementById(racineChrono + "StartStop");
+                        buttonStartStop.innerHTML = "stop!";
+                        buttonStartStop.onclick = chronoStop; //pas de ft anonyme si Event doit changer
+                        
+                        var buttonReset = document.getElementById(racineChrono + "Reset");
+                        buttonReset.style.visibility = "visible";
+                        buttonReset.onclick = chronoReset; //pas de ft anonyme si Event doit changer
+                        
+                        conteneur.cnxDataset.startChrono = new Date();
+                        conteneur.cnxDataset.timerID = true;
+                        //cnx().trace.print("chronoStart "+ conteneur.cnxDataset.timerID);
+                        conteneur.chronoInitialize();
+                    };
+                /* -------------------------- */
+                
+                return conteneurChrono; //c'est l'élément HTML de notre application; en fait son conteneur
+                
+            }; //end of chrono	
 <BR>
 <BR>
 
