@@ -13726,8 +13726,8 @@ Sommaire
 	<TD width="5%">
 	<DIV align="center">
 	<figure>
-	<A HREF="pedagogy.html#Sécurité"><IMG SRC="images/symboles/sécurité.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
-	<figcaption><BR><A HREF="pedagogy.html#Sécurité">Sécurité</A></figcaption>
+	<A HREF="pedagogy.html#Securite"><IMG SRC="images/symboles/sécurité.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR><A HREF="pedagogy.html#Securite">Sécurité</A></figcaption>
 	</figure>
 	</DIV>
 	</TD>
@@ -13735,8 +13735,8 @@ Sommaire
 	<TD width="5%">
 	<DIV align="center">
 	<figure>
-	<A HREF="pedagogy.html#Santé"><IMG SRC="images/symboles/santé3.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
-	<figcaption><BR><A HREF="pedagogy.html#Santé">Santé</A></figcaption>
+	<A HREF="pedagogy.html#Sante"><IMG SRC="images/symboles/santé3.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR><A HREF="pedagogy.html#Sante">Santé</A></figcaption>
 	</figure>
 	</DIV>
 	</TD>
@@ -13753,8 +13753,8 @@ Sommaire
 	<TD width="5%">
 	<DIV align="center">
 	<figure>
-	<A HREF="pedagogy.html#Développementdurable"><IMG SRC="images/symboles/développement1.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
-	<figcaption><BR><A HREF="pedagogy.html#Développementdurable">Développement durable</A></figcaption>
+	<A HREF="pedagogy.html#Developpementdurable"><IMG SRC="images/symboles/développement1.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR><A HREF="pedagogy.html#Developpementdurable">Développement durable</A></figcaption>
 	</figure>
 	</DIV>
 	</TD>
@@ -14259,7 +14259,86 @@ var x = setInterval(function() {
 
 
 <BR>
+	
+<DIV align="center">
+Décompte de la fin de l'année scolaire 2020-2021
+<BR>
+<p id="demo"></p>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jul 05, 2021 23:59:59").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "j " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+	
+</DIV>
+	
 <BR>	
+<BR>
+	
+<DIV align="center">
+Décompte de la fin du siècle
+<BR>
+<p id="demo"></p>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Dec 31, 2099 23:59:59").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "j " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+	
+</DIV>
+	
 <BR>
 <BR>
 <BR>
@@ -14284,7 +14363,7 @@ var x = setInterval(function() {
 	<TD width="10%">
 	<DIV align="center">
 	<figure>
-	<A HREF="pedagogy.html#Securite"><IMG SRC="images/symboles/i.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<A HREF="pedagogy.html#Securite"><IMG SRC="images/symboles/sécurité.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
 	<figcaption><BR>Sécurité</figcaption>
 	</figure>
 	</DIV>
@@ -14302,7 +14381,43 @@ var x = setInterval(function() {
 </TR>
 </TABLE>
 
+<BR>
 
+<h2><a name="Sante">Santé</h2>
+
+
+
+<TABLE border="0">
+<TR>
+
+	<TD width="45%">
+	<DIV align="left">
+	<figure>
+	</figure>
+	</DIV>
+	</TD>
+
+
+	<TD width="10%">
+	<DIV align="center">
+	<figure>
+	<A HREF="pedagogy.html#Sante"><IMG SRC="images/symboles/santé3.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<figcaption><BR>Santé</figcaption>
+	</figure>
+	</DIV>
+	</TD>
+
+	<TD width="45%">
+	<DIV align="left">
+	<figure>
+	</figure>
+	</DIV>
+	</TD>
+	
+	
+
+</TR>
+</TABLE>
 <BR>
 
 <DIV>
@@ -14333,7 +14448,7 @@ var x = setInterval(function() {
 	<TD width="10%">
 	<DIV align="center">
 	<figure>
-	<A HREF="pedagogy.html#Alimentation"><IMG SRC="images/symboles/i.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<A HREF="pedagogy.html#Alimentation"><IMG SRC="images/symboles/alimentation3.jpg" border="0" align="center" HEIGHT=70 WIDTH=70></A>
 	<figcaption><BR>Alimentation</figcaption>
 	</figure>
 	</DIV>
@@ -14383,7 +14498,7 @@ var x = setInterval(function() {
 	<TD width="10%">
 	<DIV align="center">
 	<figure>
-	<A HREF="pedagogy.html#DeveloppementDurable"><IMG SRC="images/symboles/i.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
+	<A HREF="pedagogy.html#DeveloppementDurable"><IMG SRC="images/symboles/développement3.png" border="0" align="center" HEIGHT=70 WIDTH=70></A>
 	<figcaption><BR>Développement durable</figcaption>
 	</figure>
 	</DIV>
